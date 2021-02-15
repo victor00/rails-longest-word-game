@@ -1,0 +1,26 @@
+<h1 class="title">Your Score sheet</h1>
+
+<h4>Your word : <%= @word.upcase %></h4>
+
+<ul>
+  <!-- Verify if the word is on the game grid -->
+  <% if @grid_word %>  
+    <!-- Valid english word ?  -->
+        <% if @english_word %>
+            <li class="valid"><strong>Congratulations ! </strong><i><%= @word %></i> is a valid english word</li>
+        <% else %>
+            <li class="error">Sorry <i><%= @word %></i> is <strong>NOT</strong> a valid english word</li>
+            <% @result = 0 %>
+        <% end %>
+  <% else %>
+    Sorry <i><%= @word %></i> is <strong>NOT</strong> on the grid</li>
+    <% @result = 0 %>
+  <% end %>
+</ul>
+
+<h4><strong>Your score : <%= @result %></strong></h4>
+
+
+<div class="btn btn-primary">
+    <%= link_to 'Play again', 'new' %>
+</div>
